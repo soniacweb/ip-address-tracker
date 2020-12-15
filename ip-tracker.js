@@ -1,10 +1,10 @@
-// pull from different file
+// url will be built from these
 const apiKey = 'at_pr6AIVTdnCTYd3jcLW6rGOt3zxpjS'
 const bypassCors = 'https://cors-anywhere.herokuapp.com/'
 const apiUri = 'https://geo.ipify.org/api/'
 const currentVersion = 'v1'
 
-// elements to update 
+// elements to update on the frontend
 const currentIp = document.getElementById('currentIp')
 const currentTown = document.getElementById('currentTown')
 const currentZone = document.getElementById('currentZone')
