@@ -9,10 +9,9 @@ const currentIp = document.getElementById('currentIp')
 const currentTown = document.getElementById('currentTown')
 const currentZone = document.getElementById('currentZone')
 const currentIsp = document.getElementById('currentIsp')
-const ipUrl = ''
 
 // form elements 
-const enteredIp = document.getElementById('ip_address') 
+const enteredIp = document.getElementById('ipAddress') 
 const searchBtn = document.getElementById('searchBtn')
 
 const headersOption = {
@@ -31,20 +30,19 @@ const map = L.map('display-map', {
   ]
 })
 
-const updateMarker = (updateMarker = [-33.665, 18.993]) => {
+const updateMarker = (updateMarker = [-42, 42]) => {
   map.setView(updateMarker, 13)
   L.marker(updateMarker).addTo(map)
 }
 
 const getIPDetails = (defaultIp) => {
-  if (defaultIp === undefined){
-    const ipUrl = `${bypassCors}${apiUri}${currentVersion}?apiKey=${apiKey}` 
-  } else {
-    const ipUrl = `${bypassCors}${apiUri}${currentVersion}?apiKey=${apiKey}&ipAddress=${defaultIp}`
-  }
-  fetch(ipUrl, headersOption)
-    .then( results => results.json())
-    .then( data => {
+  const ipUrl = defaultIp  === undefined ? 
+    `${bypassCors}${apiUri}${currentVersion}?apiKey=${apiKey}` 
+    : `${bypassCors}${apiUri}${currentVersion}?apiKey=${apiKey}&ipAddress=${defaultIp}`
+  
+  return fetch(ipUrl, headersOption)
+    .then(res => res.json()
+    ).then(data => {
       currentIp.innerHTML = data.ip
       currentTown.innerHTML = `${data.location.city} ${data.location.country} ${data.location.postalCode}`
       currentZone.innerHTML = data.location.timezone
