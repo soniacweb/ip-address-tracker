@@ -21,7 +21,7 @@ const headersOption = {
 }
 
 const map = L.map('display-map', {
-  'center': [0,0],
+  'center': [-0.11, 51.50],
   'zoom': 0,
   'layers': [
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
